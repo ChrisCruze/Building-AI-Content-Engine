@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building AI Content Engine</title>
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-bg-alt: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-light: #6b7280;
+            --color-accent: #2563eb;
+            --color-accent-light: #3b82f6;
+            --color-border: #e5e7eb;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        header {
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            max-width: 700px;
+        }
+
+        section {
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: var(--color-bg-alt);
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-md);
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-sm);
+            max-width: 800px;
+        }
+
+        .highlight {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        ul, ol {
+            margin-left: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-light);
+        }
+
+        li {
+            margin-bottom: var(--spacing-xs);
+            max-width: 800px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .card {
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            transition: border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.1rem;
+        }
+
+        .card-content {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .accent {
+            color: var(--color-accent);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+            max-width: 800px;
+        }
+
+        th, td {
+            padding: var(--spacing-sm);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            color: var(--color-text-light);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--color-bg);
+            color: var(--color-text-light);
+            border: 1px solid var(--color-border);
+        }
+
+        .status-badge.in-progress {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .status-badge.pending {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: var(--spacing-md);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Building AI Content Engine</h1>
+            <p class="subtitle">Create a content marketing plan using AI by leveraging best practices and developing a process to build engaging, interesting content for social media and other platforms.</p>
+        </header>
+
+        <section id="brief">
+            <h2>Brief</h2>
+            <p>The purpose of this project is to essentially create a content marketing plan using AI by using the best practices and developing a process to leverage AI to build content and generate content on social media or other platforms that way. We can build an engaging, interesting funnel based on current events and other best practices, such as whether that's a blog or any other content generation practices, and identifying what would be a good use case for a social dating platform that strives to improve the marketing and have a greater impact on getting people to sign up for the platform.</p>
+        </section>
+
+        <section id="purpose">
+            <h2>Purpose</h2>
+            <p>Create a content engine that can craft well-crafted blog articles and content that can be put on different social media platforms. The system should be able to create newsletters that can be sent out on a regular basis, driving user engagement and sign-ups for the platform.</p>
+        </section>
+
+        <section id="vision">
+            <h2>Vision</h2>
+            <p>Success is building an engine that can craft well-crafted blog articles and content that can be put on different social media platforms. The stakeholders are the users of the platform, as well as the CEO of the platform, and other people. It could even create a newsletter that can be sent out on a regular basis.</p>
+            <p class="highlight">A successful outcome is one where we have a well-defined plan and a system in place to execute.</p>
+        </section>
+
+        <section id="success-criteria">
+            <h2>Success Criteria</h2>
+            <p>The project will be considered successful when:</p>
+            <ul>
+                <li><strong>Well-Defined Plan</strong>: Complete strategic framework for AI-powered content creation</li>
+                <li><strong>System in Place</strong>: Operational content generation system ready for execution</li>
+                <li><strong>Key Documents Complete</strong>: All five core documents finalized (Strategy, Technical Spec, Architecture, Agent Framework, Templates Guide)</li>
+                <li><strong>Content Quality</strong>: System produces well-crafted, engaging content suitable for multiple platforms</li>
+                <li><strong>Automation Ready</strong>: Process can generate content on a regular basis without constant manual intervention</li>
+            </ul>
+        </section>
+
+        <section id="key-documents">
+            <h2>Key Documents</h2>
+            <p>The AI Content System Documentation Suite consists of five critical documents that work together to create a comprehensive content generation framework:</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">1. AI Content Growth Strategy</div>
+                    <div class="card-content">Defines why content exists, who it's for, and how it drives measurable growth. Aligns AI output with business outcomes and avoids generic or off-brand drift.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">2. AI Content Technical Specification</div>
+                    <div class="card-content">Translates the growth strategy into testable, engineering-readable requirements. Focuses on what the system must do—not how it's built.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">3. AI Content System Architecture</div>
+                    <div class="card-content">Explains how the system is built and how data flows. Ensures scalability, modularity, and failure recovery.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">4. AI Content Agent Framework</div>
+                    <div class="card-content">Defines the intelligence layer: which agents exist, their responsibilities, and how they collaborate to produce high-quality content.</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">5. AI Content Templates Guide</div>
+                    <div class="card-content">Provides reusable formats and concrete examples. Operationalizes the system at scale across platforms and contributors.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stakeholders">
+            <h2>Stakeholders</h2>
+            <ul>
+                <li><strong>Platform Users</strong>: Target audience for content</li>
+                <li><strong>CEO</strong>: Strategic alignment and positioning</li>
+                <li><strong>Content Team</strong>: Execution and content creation</li>
+                <li><strong>Growth Marketer/Head of Marketing</strong>: Strategy and audience insights</li>
+                <li><strong>Product Manager</strong>: User insight and platform positioning</li>
+                <li><strong>Engineering Team</strong>: Technical implementation and system architecture</li>
+            </ul>
+        </section>
+
+        <section id="resources">
+            <h2>Resources</h2>
+            <ul>
+                <li><strong>LLM Tools</strong>: ChatGPT, OpenAI, Claude</li>
+                <li><strong>Automation</strong>: N8n for workflow orchestration</li>
+                <li><strong>Research</strong>: Best practices in content marketing, social media strategies, content funnels</li>
+                <li><strong>Platform Knowledge</strong>: Understanding of social dating platform user motivations and behaviors</li>
+            </ul>
+        </section>
+
+        <section id="deliverables">
+            <h2>Deliverables</h2>
+            
+            <h3>1. AI Content Growth Strategy Document</h3>
+            <ul>
+                <li>Purpose and success definition</li>
+                <li>Audience segments and user motivations</li>
+                <li>Platform positioning and differentiation</li>
+                <li>Content goals and KPIs</li>
+                <li>Research and signal sources</li>
+                <li>Content funnel and channel roles</li>
+                <li>Brand voice, tone, and guardrails</li>
+            </ul>
+
+            <h3>2. AI Content Technical Specification</h3>
+            <ul>
+                <li>Scope and system goals</li>
+                <li>Content generation requirements</li>
+                <li>Input/output definitions</li>
+                <li>Automation and review thresholds</li>
+                <li>Performance and scalability requirements</li>
+                <li>Constraints and assumptions</li>
+            </ul>
+
+            <h3>3. AI Content System Architecture</h3>
+            <ul>
+                <li>High-level system overview</li>
+                <li>Core components and responsibilities</li>
+                <li>Data ingestion and research flow</li>
+                <li>Content generation and refinement flow</li>
+                <li>Distribution and publishing flow</li>
+                <li>Reliability, scaling, and risk management</li>
+            </ul>
+
+            <h3>4. AI Content Agent Framework</h3>
+            <ul>
+                <li>Overview of multi-agent approach</li>
+                <li>Agent roles and responsibilities</li>
+                <li>Inputs, outputs, and constraints per agent</li>
+                <li>Agent interaction and sequencing</li>
+                <li>Prompt evolution and evaluation strategy</li>
+            </ul>
+
+            <h3>5. AI Content Templates Guide</h3>
+            <ul>
+                <li>Template usage overview</li>
+                <li>Blog content templates</li>
+                <li>Social media templates</li>
+                <li>Newsletter templates</li>
+                <li>Annotated examples</li>
+                <li>Customization and iteration guidance</li>
+            </ul>
+        </section>
+
+        <section id="timeline">
+            <h2>Timeline</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Research & Planning</td>
+                        <td><span class="status-badge in-progress">In Progress</span></td>
+                        <td>Key documents defined: strategy, tech spec, arch, agents, template guide</td>
+                    </tr>
+                    <tr>
+                        <td>Strategy Development</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Growth strategy document creation</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Specification</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Technical requirements definition</td>
+                    </tr>
+                    <tr>
+                        <td>Architecture Design</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>System architecture documentation</td>
+                    </tr>
+                    <tr>
+                        <td>Agent Framework</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Multi-agent system design</td>
+                    </tr>
+                    <tr>
+                        <td>Templates Creation</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Content templates and examples</td>
+                    </tr>
+                    <tr>
+                        <td>System Implementation</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Build and deploy content engine</td>
+                    </tr>
+                    <tr>
+                        <td>Testing & Refinement</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                        <td>Validate content quality and system performance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="current-status">
+            <h2>Current Status</h2>
+            <p><strong>Research Phase</strong>: Key documents have been identified and defined. The system will consist of five core documents that work together to create a comprehensive content generation framework.</p>
+            <p><strong>Next Steps</strong>: Begin development of the AI Content Growth Strategy document, which serves as the foundation for all other documents in the system.</p>
+        </section>
+    </div>
+</body>
+</html>
+

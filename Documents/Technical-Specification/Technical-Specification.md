@@ -332,3 +332,4 @@ This technical specification connects to:
 
 *This specification should be updated when new content types are required, performance requirements change, or technical constraints evolve.*
 
+

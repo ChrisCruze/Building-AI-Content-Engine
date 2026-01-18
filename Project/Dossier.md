@@ -7,4 +7,4 @@ The resources required would be more an LLM suite tool, whether that's ChatGPT, 
 The key actions to perform are:
 1. More research is needed in order to understand what are the best practices that need to be done.
 
-A successful outcome is one where we have a well-defined plan and a system in place to execute. 
+A successful outcome is one where we have a well-defined plan and a system in place to execute.

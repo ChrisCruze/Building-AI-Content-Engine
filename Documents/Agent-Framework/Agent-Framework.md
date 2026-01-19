@@ -29,15 +29,19 @@ Content Request
       ▼
 Orchestrator Agent
       │
-      ├──▶ Research Agent ──▶ Context
+      ├──▶ Research Agent ──▶ Research Context
+      │                          │
+      │                          ▼
+      ├──▶ Outline Agent ────▶ Content Outline
+      │                          │
+      │                          ▼
+      ├──▶ Writer Agent ────▶ Draft Content
       │
-      ├──▶ Writer Agent ───▶ Draft Content
+      ├──▶ Editor Agent ────▶ Refined Content
       │
-      ├──▶ Editor Agent ───▶ Refined Content
+      ├──▶ Quality Agent ────▶ Quality Score
       │
-      ├──▶ Quality Agent ──▶ Quality Score
-      │
-      └──▶ Formatter Agent ─▶ Final Content
+      └──▶ Formatter Agent ──▶ Final Content
 ```
 
 ## Agent Roles and Responsibilities
@@ -82,22 +86,204 @@ Orchestrator Agent
 - Provide citations and sources
 
 **Inputs**:
-- Content topic and requirements
+- `idea_brief.md`: topic, audience, goal, working titles, target format
+- `voice_guidelines.md` *(optional)*: tone, banned phrases, brand/style cues
 - Research data sources
 - Historical content performance data
 
 **Outputs**:
-- Research summary
-- Key insights and trends
-- Relevant data points
-- Source citations
-- Content opportunity recommendations
+- `YYYY-MM-DD-topic-research.md`
+- Optional: `surprising_insights.md` (separate doc of hooks/angles)
+
+**Research Doc Contents**:
+
+| Section | Description |
+|--------|-------------|
+| `Search landscape` | 5–10 URLs + notes (angle, strength, content gaps) |
+| `Keywords & intent` | Primary + secondary keywords, search intents, real phrasing |
+| `Surprising insights` | At least 5 counter-intuitive ideas relevant to social/group dining |
+| `Data & stats` | Bite-sized data with sources and relevance |
+| `Event scan` | Real or typical dining events (e.g., Meetup, supper clubs) |
+| `Anecdote prompts` | Prompts, not full anecdotes, for the writer to expand |
+
+**Prompt Template**:
+
+```prompt
+You are a **content researcher** for a mobile social dining app.
+Goal: prepare a research pack so another agent can write a deeply original, engaging article.
+
+1. Read this brief:
+– Topic: [paste]
+– Audience: [paste]
+– Goal: [paste]
+– Cities: [paste]
+
+2. Do SERP and audience research. Do **not** write the article.
+3. Create a structured doc with:
+- `Search landscape`
+- `Keywords & intent`
+- `Surprising insights`
+- `Data & stats`
+- `Event scan`
+- `Anecdote prompts`
+
+Constraints:
+- Emphasize originality, insight density
+- Focus on in-app behaviors (RSVPs, hosting, last-minute joins)
+- Use bullet points, not prose
+- Include sources as plain URLs
+```
+
+**Research Template**:
+
+```markdown
+# Research – [Working title]
+
+## 1. Brief recap
+- Topic:
+- Audience:
+- Goal:
+- City / focus area:
+
+## 2. Search landscape
+- [URL] – [angle, strength, gap]
+...
+
+## 3. Keywords & intent
+- Primary keyword:
+- Secondary keywords:
+- Search intent:
+- Notes:
+
+## 4. Surprising / non-obvious insights
+1. Insight:
+   - Why it matters:
+   - Use in social dining:
+
+## 5. Data & stats
+- Stat:
+  - Source:
+  - Why it's compelling:
+
+## 6. Event scan
+- Event name:
+  - City / format:
+  - Why it matters:
+  - Article angle:
+
+## 7. Anecdote prompts
+- "The first time I went to a dinner where I knew no one…"
+...
+```
 
 **Constraints**:
 - Must provide accurate, verifiable information
 - Must cite sources for all claims
 - Must complete within time limits
 - Must filter irrelevant information
+
+### 2a. Outline Agent
+
+**Purpose**: Translate research insights into narrative flow and structure
+
+**Responsibilities**:
+- Extract top insights, stats, and events from research
+- Brainstorm working titles with primary keywords
+- Create hierarchical outline with purpose, key points, and app tie-ins
+- Develop SEO plan (keywords, meta title, meta description, slug)
+- Flag generic sections and suggest improvements
+
+**Inputs**:
+- `idea_brief.md`
+- `topic-research.md`
+- Optional: `brand_story_bank.md` (real/fictional stories, character types)
+
+**Outputs**:
+- `YYYY-MM-DD-topic-outline.md`
+
+**Outline Contents**:
+
+| Section                 | Details                                                      |
+| ----------------------- | ------------------------------------------------------------ |
+| `Working title options` | 2–5 curiosity-driven, keyword-aligned titles                 |
+| `Hook ideas`            | Surprising stat, mini-anecdote, big question                 |
+| `Section structure`     | H2s/H3s with bullets: key ideas, insights, events, anecdotes |
+| `Anecdote slots`        | Mark where stories go (from story bank or generated)         |
+| `SEO plan`              | Keywords, meta title, meta description, slug                 |
+
+**Prompt Template**:
+
+```prompt
+You are an **outline architect** for long-form content about social dining and community.
+Input: research doc + brief.
+Output: a detailed outline that maximizes engagement, originality, and SEO. Don't write the article.
+
+Steps:
+1. Extract top insights, stats, events.
+2. Brainstorm 3–5 working titles (with primary keyword).
+3. Write 2–3 hooks (stat, anecdote, question).
+4. Create a hierarchical outline with:
+   - Purpose, key bullets, insight/event/anecdote placement, app tie-in
+5. Add SEO plan:
+   - Keywords, meta title, meta description, URL slug
+
+Constraints:
+- Move narrative: problem → tension → insight → action
+- Use at least one surprising insight in intro and outro
+- Flag generic sections and suggest how to make them sharper
+```
+
+**Outline Template**:
+
+```markdown
+# Outline – [Working title]
+
+## 1. Brief recap
+- Audience:
+- Goal:
+- Primary keyword:
+- Secondary keywords:
+
+## 2. Title ideas
+1. ...
+2. ...
+
+## 3. Hook ideas
+- Hook A – Stat:
+- Hook B – Mini anecdote:
+- Hook C – Big question:
+
+## 4. Structure
+
+### H2: [Section]
+- Purpose:
+- Key points:
+- Insights:
+- Data:
+- Event:
+- Anecdote slot:
+- App tie-in:
+
+...
+
+## 5. Conclusion plan
+- Takeaway:
+- Emotional close:
+- CTA:
+
+## 6. SEO notes
+- Primary keyword:
+- Secondary keywords:
+- Meta title:
+- Meta description:
+- Suggested URL:
+```
+
+**Constraints**:
+- Must create narrative flow (problem → tension → insight → action)
+- Must include surprising insights in intro and outro
+- Must flag generic sections for improvement
+- Must complete within time limits
 
 ### 3. Writer Agent
 
@@ -111,15 +297,85 @@ Orchestrator Agent
 - Ensure content meets length and format requirements
 
 **Inputs**:
-- Research context from Research Agent
-- Content requirements (type, length, format)
-- Brand voice guidelines
-- Templates and examples
+- `idea_brief.md`
+- `topic-research.md`
+- `topic-outline.md`
+- `voice_guidelines.md` *(tone, banned phrases, examples)*
+- Optional: `story_bank.md`
 
 **Outputs**:
-- Draft content
+- `YYYY-MM-DD-topic-draft-v1.md` (full blog/newsletter draft)
 - Content metadata (word count, structure)
 - Confidence scores
+
+**Writer Requirements**:
+- **Follow outline exactly**
+- **Hook**: Use and polish one proposed hook
+- **Each section**:
+  - Add a **concrete example** or **anecdote**
+  - Explain stats in plain language
+  - Reference real or relevant events
+  - Mention app features where appropriate
+- **Format for mobile**:
+  - Short paragraphs
+  - Bullet lists
+  - Descriptive subheads
+- **End with CTA** tied to the app
+
+**Prompt Template**:
+
+```prompt
+You are a **long-form writer** for a mobile social dining app.
+Your job: turn this outline into a vivid, emotionally compelling article.
+
+Inputs:
+- Brief: [paste]
+- Research: [paste or reference]
+- Outline: [paste]
+- Voice: [paste key notes]
+
+Instructions:
+1. Follow the structure exactly.
+2. Start with one polished hook.
+3. Add story or concrete example in every section.
+4. Integrate data/events naturally ("That means...")
+5. Use bullets & short paras.
+6. No generic filler. Replace vague claims with scenes or storylets.
+7. End with specific CTA related to app.
+
+Style: Friendly, smart, adult, local.
+```
+
+**Draft Template**:
+
+```markdown
+# [Working or final title]
+
+> Meta title:  
+> Meta description:  
+> URL slug:
+
+## Intro
+
+[Hook: stat, anecdote, or question → leads into core problem]
+
+## H2: [Section Title]
+[1–2 line intro to section]
+
+- [Paragraphs and bullets]
+- [Anecdote where marked]
+- [Data explained in human terms]
+- [App example]
+
+## H2: [Next Section]
+...
+
+## Conclusion
+
+[Summarize core idea or shift]
+
+**Call to action:** [Concrete, app-linked next step]
+```
 
 **Constraints**:
 - Must adhere to brand voice (90%+ compliance)
@@ -131,6 +387,18 @@ Orchestrator Agent
 - **Blog Writer**: Long-form articles, SEO optimization
 - **Social Writer**: Short-form posts, platform-specific formatting
 - **Newsletter Writer**: Multi-section content, email formatting
+
+### Agent Workflow Summary: Research → Outline → Write
+
+The three core content generation agents work in sequence:
+
+| Agent             | Input                      | Output              | Purpose                                |
+| ----------------- | -------------------------- | ------------------- | -------------------------------------- |
+| 🧠 **Researcher** | `idea_brief.md`            | `topic-research.md` | Extract original, usable insights      |
+| 🧱 **Outliner**   | Brief + research           | `topic-outline.md`  | Translate insights into narrative flow |
+| ✍️ **Writer**     | Outline + research + voice | `topic-draft-v1.md` | Turn outline into publishable story    |
+
+Each agent is **narrow, structured, and reusable**. With small prompt tweaks and doc changes, this system scales from **SEO blogs** to **emotional newsletters**.
 
 ### 4. Editor Agent
 
@@ -310,6 +578,7 @@ Agents communicate through a standardized message format:
 |-------|-----------|-------------------|----------------|
 | Orchestrator | 30 min | N/A | Retry, fallback agents |
 | Research | 10 min | Source accuracy | Use cached data |
+| Outline | 8 min | Narrative flow quality | Retry with different structure |
 | Writer | 15 min | 80% brand compliance | Retry with different approach |
 | Editor | 5 min | Improve by 10% | Flag for human review |
 | Quality | 2 min | Consistent scoring | Use default scores |
@@ -323,16 +592,18 @@ Agents communicate through a standardized message format:
 
 1. **Orchestrator** receives content request
 2. **Orchestrator** initiates **Research Agent** to gather context
-3. **Research Agent** returns context and insights
-4. **Orchestrator** initiates **Writer Agent** with context
-5. **Writer Agent** generates draft content
-6. **Orchestrator** initiates **Editor Agent** to refine content
-7. **Editor Agent** returns refined content
-8. **Orchestrator** initiates **Quality Agent** to evaluate
-9. **Quality Agent** scores content and makes routing decision
-10. If approved: **Orchestrator** initiates **Formatter Agent**
-11. If needs review: Content routed to human review
-12. If needs revision: Loop back to **Editor Agent** or **Writer Agent**
+3. **Research Agent** returns research document with insights
+4. **Orchestrator** initiates **Outline Agent** with research and brief
+5. **Outline Agent** returns structured outline with SEO plan
+6. **Orchestrator** initiates **Writer Agent** with outline, research, and voice guidelines
+7. **Writer Agent** generates draft content following outline
+8. **Orchestrator** initiates **Editor Agent** to refine content
+9. **Editor Agent** returns refined content
+10. **Orchestrator** initiates **Quality Agent** to evaluate
+11. **Quality Agent** scores content and makes routing decision
+12. If approved: **Orchestrator** initiates **Formatter Agent**
+13. If needs review: Content routed to human review
+14. If needs revision: Loop back to **Editor Agent** or **Writer Agent**
 
 ### Parallel Processing Opportunities
 
@@ -350,7 +621,7 @@ Agents communicate through a standardized message format:
 ### Agent Handoff Patterns
 
 #### Sequential Handoff
-- Research → Writer → Editor → Quality
+- Research → Outline → Writer → Editor → Quality
 - Each agent waits for previous to complete
 
 #### Parallel Handoff

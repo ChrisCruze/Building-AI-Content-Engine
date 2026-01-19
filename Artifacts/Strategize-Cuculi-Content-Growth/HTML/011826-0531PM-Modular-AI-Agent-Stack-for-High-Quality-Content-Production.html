@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>011826 5:31PM Modular AI Agent Stack for Content</title>
+<meta name="Title" content="Modular AI Agent Stack for High-Quality Content Production" type="Artifact">
+<meta name="Summary" content="A three-stage AI orchestration framework separating Research, Outlining, and Writing to ensure content originality and SEO depth." type="Artifact">
+<meta name="Description" content="A framework slide illustrating the data flow, inputs, and outputs between three specialized AI agents." type="Artifact">
+<meta name="Insight" content="Separating the 'Researcher' (insight extraction) from the 'Writer' (prose generation) is the critical step to avoiding generic AI content." type="Artifact">
+<meta name="Question" content="How can multiple AI agents be coordinated to produce high-quality, non-generic content at scale?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f0f0f0; font-family: 'Arial', 'Helvetica', sans-serif; color: #333333; -webkit-font-smoothing: antialiased;">
+
+<!-- <analysis>
+1. Key Points:
+   - The system uses three distinct agents: Researcher, Outliner, Writer.
+   - It is a modular system where outputs of one become inputs of the next.
+   - Researcher focuses on raw data/insights, not prose.
+   - Outliner bridges the gap, structuring data into a narrative.
+   - Writer focuses on voice/scene, following the outline strictly.
+   - Goal is to solve "generic" AI content by enforcing specialization.
+
+2. Information Type: 
+   - Framework/Process Flow. It describes a sequential pipeline (Stack).
+
+3. Slide Layout Evaluation:
+   - Table Slide: Good for comparing the agents side-by-side, but might lose the "flow" aspect.
+   - Chart Slide: No quantitative data to chart.
+   - Subtitle Slide: Could work for a vertical list, but less visual impact for a "stack".
+   - Visual Slide: Too generic.
+   - Framework Slide: Best fit. It allows us to visualize the three pillars (agents) side-by-side with arrows or flow indicators, showing the transformation of information. It clearly delineates the "Stack".
+
+4. Selected Layout: **Framework Slide**
+   - Detailed Reasoning: The content describes a structured architecture. A 3-column framework visually represents the stability and sequence of the process. It allows us to group "Inputs," "Actions," and "Outputs" clearly within each agent's silo.
+
+5. Plan:
+   - Title: Focus on the "Modular Stack" concept.
+   - Main Body: A 3-column layout using `display: table` (since flex is banned).
+   - Columns: Researcher, Outliner, Writer.
+   - Inside Columns: distinct visual blocks for "Role," "Inputs," and "Outputs."
+   - Footer: A summary of the value proposition (Scalability + Quality).
+</analysis> -->
+
+<!-- <design_planning>
+1. Color Palette:
+   - Primary Blue (McKinsey-esque): #051c2c (Deep Navy for headers)
+   - Secondary Blue: #0077c8 (Bright blue for accents/borders)
+   - Backgrounds: #ffffff (White for main), #f5f7f9 (Light blue-grey for panels)
+   - Text: #333333 (Dark grey)
+
+2. Visual Hierarchy:
+   - Title: 24px-28px, Dark Navy, Serif or Sans-Serif strong.
+   - Column Headers: Uppercase, bold, 14px, White text on Navy background.
+   - Sub-headers (Input/Output): Bold, 12px, Blue text.
+   - Body Text: 11px-12px, Dark Grey.
+
+3. Layout Structure:
+   - Main Container: 1000px width (standard slide width).
+   - Header Section: Top 15%.
+   - Content Section: Middle 70%. Use `display: table` with `table-layout: fixed` and `border-spacing: 20px` to create distinct, equal-width columns without Flexbox.
+   - Footer/Key Insight: Bottom 15%, full width background.
+
+4. Typography & Elements:
+   - Font: Arial (universal professional).
+   - Elements: Chevrons or simple arrows (using CSS borders or entities) to show flow between columns.
+   - Box styling: 1px solid borders to define the "cards".
+</design_planning> -->
+
+<!-- Slide Container -->
+<div style="width: 1000px; margin: 40px auto; background-color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; position: relative;">
+    
+    <!-- Header -->
+    <div style="padding: 40px 50px 20px 50px;">
+        <div style="font-size: 12px; text-transform: uppercase; color: #666666; margin-bottom: 10px; letter-spacing: 1px;">AI Content Operations</div>
+        <h1 style="font-size: 28px; margin: 0; color: #051c2c; font-weight: normal; line-height: 1.2;">
+            Modular Agent Orchestration: The <span style="font-weight: bold; color: #0077c8;">Researcher-Outline-Writer</span> Stack
+        </h1>
+        <div style="width: 50px; height: 3px; background-color: #0077c8; margin-top: 15px;"></div>
+    </div>
+
+    <!-- Main Framework Area (Table Layout for Columns) -->
+    <div style="display: table; width: 100%; table-layout: fixed; padding: 0 30px 40px 30px; box-sizing: border-box;">
+        
+        <!-- Column 1: Researcher -->
+        <div style="display: table-cell; vertical-align: top; padding: 0 15px;">
+            <div style="border: 1px solid #e0e0e0; background-color: #f9fbfd; height: 100%;">
+                <!-- Col Header -->
+                <div style="background-color: #051c2c; color: #ffffff; padding: 15px; text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 5px;">🧠</div>
+                    <div style="font-size: 16px; font-weight: bold; text-transform: uppercase;">1. Researcher</div>
+                    <div style="font-size: 11px; opacity: 0.8; margin-top: 5px;">The Insight Engine</div>
+                </div>
+                <!-- Col Body -->
+                <div style="padding: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Primary Goal</strong>
+                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #444;">Extract deep, original insights and data. <strong>Do not write prose.</strong></p>
+                    </div>
+
+                    <div style="border-top: 1px solid #e0e0e0; padding-top: 15px; margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Key Inputs</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #555; line-height: 1.6;">
+                            <li>Idea Brief (Topic, Goal)</li>
+                            <li>Audience Definition</li>
+                            <li>Voice Guidelines (Tone)</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: #ffffff; border: 1px solid #dcdcdc; padding: 10px;">
+                        <strong style="color: #333; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 5px;">OUTPUT: Research Doc</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #555; line-height: 1.4;">
+                            <li>Search Landscape & Gaps</li>
+                            <li>5+ Counter-intuitive Insights</li>
+                            <li>Real Data Points & Stats</li>
+                            <li>Anecdote Prompts (not stories)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Separator 1 -->
+        <div style="display: table-cell; width: 30px; vertical-align: middle; text-align: center;">
+            <div style="font-size: 24px; color: #0077c8;">&#10145;</div>
+        </div>
+
+        <!-- Column 2: Outliner -->
+        <div style="display: table-cell; vertical-align: top; padding: 0 15px;">
+             <div style="border: 1px solid #e0e0e0; background-color: #f9fbfd; height: 100%;">
+                <!-- Col Header -->
+                <div style="background-color: #051c2c; color: #ffffff; padding: 15px; text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 5px;">🧱</div>
+                    <div style="font-size: 16px; font-weight: bold; text-transform: uppercase;">2. Outliner</div>
+                    <div style="font-size: 11px; opacity: 0.8; margin-top: 5px;">The Structural Architect</div>
+                </div>
+                <!-- Col Body -->
+                <div style="padding: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Primary Goal</strong>
+                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #444;">Translate raw data into narrative flow and SEO strategy.</p>
+                    </div>
+
+                    <div style="border-top: 1px solid #e0e0e0; padding-top: 15px; margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Key Inputs</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #555; line-height: 1.6;">
+                            <li>Idea Brief</li>
+                            <li><strong>Research Doc</strong> (from Step 1)</li>
+                            <li>Brand Story Bank</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: #ffffff; border: 1px solid #dcdcdc; padding: 10px;">
+                        <strong style="color: #333; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 5px;">OUTPUT: Structural Outline</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #555; line-height: 1.4;">
+                            <li>Narrative Arc (Problem → Action)</li>
+                            <li>Hook Options (Stat/Anecdote)</li>
+                            <li>SEO Metadata & Slug</li>
+                            <li>Placement of specific stories</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Separator 2 -->
+        <div style="display: table-cell; width: 30px; vertical-align: middle; text-align: center;">
+            <div style="font-size: 24px; color: #0077c8;">&#10145;</div>
+        </div>
+
+        <!-- Column 3: Writer -->
+        <div style="display: table-cell; vertical-align: top; padding: 0 15px;">
+             <div style="border: 1px solid #e0e0e0; background-color: #f9fbfd; height: 100%;">
+                <!-- Col Header -->
+                <div style="background-color: #051c2c; color: #ffffff; padding: 15px; text-align: center;">
+                    <div style="font-size: 32px; margin-bottom: 5px;">✍️</div>
+                    <div style="font-size: 16px; font-weight: bold; text-transform: uppercase;">3. Writer</div>
+                    <div style="font-size: 11px; opacity: 0.8; margin-top: 5px;">The Storyteller</div>
+                </div>
+                <!-- Col Body -->
+                <div style="padding: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Primary Goal</strong>
+                        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #444;">Craft emotion and scene. Focus on tone, not structural logic.</p>
+                    </div>
+
+                    <div style="border-top: 1px solid #e0e0e0; padding-top: 15px; margin-bottom: 15px;">
+                        <strong style="color: #0077c8; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 5px;">Key Inputs</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 12px; color: #555; line-height: 1.6;">
+                            <li><strong>Outline</strong> (Strict adherence)</li>
+                            <li>Research Doc (Reference)</li>
+                            <li>Voice Guidelines</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: #ffffff; border: 1px solid #dcdcdc; padding: 10px;">
+                        <strong style="color: #333; font-size: 11px; text-transform: uppercase; display: block; margin-bottom: 5px;">OUTPUT: Final Draft</strong>
+                        <ul style="margin: 0; padding-left: 15px; font-size: 11px; color: #555; line-height: 1.4;">
+                            <li>Short paragraphs & bullets</li>
+                            <li>Concrete scenes (no fluff)</li>
+                            <li>Polished Hooks & CTAs</li>
+                            <li>Human-sounding Tone</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Insight Footer -->
+    <div style="background-color: #f2f2f2; border-top: 1px solid #dcdcdc; padding: 25px 50px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="width: 20%; vertical-align: top; padding-right: 20px;">
+                    <strong style="color: #051c2c; font-size: 14px; display: block; border-bottom: 2px solid #0077c8; padding-bottom: 5px;">Strategic Value</strong>
+                </td>
+                <td style="vertical-align: top;">
+                    <div style="font-size: 13px; color: #444; margin-bottom: 5px;">
+                        <strong>1. Originality:</strong> By forcing the Researcher to find specific, non-obvious insights before writing begins, the system prevents the "average" hallucinations common in single-shot prompts.
+                    </div>
+                    <div style="font-size: 13px; color: #444;">
+                         <strong>2. Scalability:</strong> The modular nature means you can swap the "Voice" document to repurpose the same Research/Outline for different channels (e.g., Blog vs. Newsletter) instantly.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Slide Number/Footer -->
+    <div style="position: absolute; bottom: 15px; right: 20px; font-size: 10px; color: #999;">
+        Confidential - Internal Strategy
+    </div>
+
+</div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><h1>Spec: Researcher, Outline &amp; Writer Agents for Social Dining Content</h1>
+<h2>How to Orchestrate AI Content Agents for Original, SEO-Rich Work</h2>
+<blockquote>
+<p>"Each agent should work from a small, consistent set of documents so you can chain them cleanly and prompt them for originality, surprising insights, and real social‑dining flavor."</p>
+</blockquote>
+<ul>
+<li><strong>Modular document-driven system</strong> enables clean handoffs between Researcher → Outline → Writer agents[^1]</li>
+<li><strong>Each agent uses specific inputs/outputs</strong> and follows a structured prompt template[^2]</li>
+<li><strong>Emphasis on originality, SEO, and emotional relevance</strong> to stand out in saturated content markets[^3]</li>
+<li><strong>Researcher focuses on insights, not prose</strong>; <strong>Writer focuses on scenes, not summaries</strong>[^4]</li>
+<li><strong>Outlines bridge data and narrative</strong>—turning raw research into story-ready scaffolding[^5]</li>
+</ul>
+<hr>
+<h2>🧠 Researcher Agent</h2>
+<h3>📥 Inputs</h3>
+<ul>
+<li><code>idea_brief.md</code>: topic, audience, goal, working titles, target format</li>
+<li><code>voice_guidelines.md</code> <em>(optional)</em>: tone, banned phrases, brand/style cues</li>
+</ul>
+<h3>📤 Outputs</h3>
+<ul>
+<li><code>YYYY-MM-DD-topic-research.md</code></li>
+<li>Optional: <code>surprising_insights.md</code> (separate doc of hooks/angles)</li>
+</ul>
+<hr>
+<h3>🗂️ Research Doc Contents</h3>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Search landscape</code></td>
+<td>5–10 URLs + notes (angle, strength, content gaps)</td>
+</tr>
+<tr>
+<td><code>Keywords &amp; intent</code></td>
+<td>Primary + secondary keywords, search intents, real phrasing</td>
+</tr>
+<tr>
+<td><code>Surprising insights</code></td>
+<td>At least 5 counter-intuitive ideas relevant to social/group dining</td>
+</tr>
+<tr>
+<td><code>Data &amp; stats</code></td>
+<td>Bite-sized data with sources and relevance</td>
+</tr>
+<tr>
+<td><code>Event scan</code></td>
+<td>Real or typical dining events (e.g., Meetup, supper clubs)</td>
+</tr>
+<tr>
+<td><code>Anecdote prompts</code></td>
+<td>Prompts, not full anecdotes, for the writer to expand</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>💡 Prompt Template</h3>
+<pre><code class="language-prompt">You are a **content researcher** for a mobile social dining app.
+Goal: prepare a research pack so another agent can write a deeply original, engaging article.
+
+1. Read this brief:
+– Topic: [paste]
+– Audience: [paste]
+– Goal: [paste]
+– Cities: [paste]
+
+2. Do SERP and audience research. Do **not** write the article.
+3. Create a structured doc with:
+- `Search landscape`
+- `Keywords &amp; intent`
+- `Surprising insights`
+- `Data &amp; stats`
+- `Event scan`
+- `Anecdote prompts`
+
+Constraints:
+- Emphasize originality, insight density
+- Focus on in-app behaviors (RSVPs, hosting, last-minute joins)
+- Use bullet points, not prose
+- Include sources as plain URLs
+</code></pre>
+<hr>
+<h3>📄 Research Template</h3>
+<pre><code class="language-markdown"># Research – [Working title]
+
+## 1. Brief recap
+- Topic:
+- Audience:
+- Goal:
+- City / focus area:
+
+## 2. Search landscape
+- [URL] – [angle, strength, gap]
+...
+
+## 3. Keywords &amp; intent
+- Primary keyword:
+- Secondary keywords:
+- Search intent:
+- Notes:
+
+## 4. Surprising / non-obvious insights
+1. Insight:
+   - Why it matters:
+   - Use in social dining:
+
+## 5. Data &amp; stats
+- Stat:
+  - Source:
+  - Why it’s compelling:
+
+## 6. Event scan
+- Event name:
+  - City / format:
+  - Why it matters:
+  - Article angle:
+
+## 7. Anecdote prompts
+- “The first time I went to a dinner where I knew no one…”
+...
+</code></pre>
+<hr>
+<h2>🧱 Outline Agent</h2>
+<h3>📥 Inputs</h3>
+<ul>
+<li><code>idea_brief.md</code></li>
+<li><code>topic-research.md</code></li>
+<li>Optional: <code>brand_story_bank.md</code> (real/fictional stories, character types)</li>
+</ul>
+<h3>📤 Output</h3>
+<ul>
+<li><code>YYYY-MM-DD-topic-outline.md</code></li>
+</ul>
+<hr>
+<h3>🧩 Outline Contents</h3>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Working title options</code></td>
+<td>2–5 curiosity-driven, keyword-aligned titles</td>
+</tr>
+<tr>
+<td><code>Hook ideas</code></td>
+<td>Surprising stat, mini-anecdote, big question</td>
+</tr>
+<tr>
+<td><code>Section structure</code></td>
+<td>H2s/H3s with bullets: key ideas, insights, events, anecdotes</td>
+</tr>
+<tr>
+<td><code>Anecdote slots</code></td>
+<td>Mark where stories go (from story bank or generated)</td>
+</tr>
+<tr>
+<td><code>SEO plan</code></td>
+<td>Keywords, meta title, meta description, slug</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>💡 Prompt Template</h3>
+<pre><code class="language-prompt">You are an **outline architect** for long-form content about social dining and community.
+Input: research doc + brief.
+Output: a detailed outline that maximizes engagement, originality, and SEO. Don’t write the article.
+
+Steps:
+1. Extract top insights, stats, events.
+2. Brainstorm 3–5 working titles (with primary keyword).
+3. Write 2–3 hooks (stat, anecdote, question).
+4. Create a hierarchical outline with:
+   - Purpose, key bullets, insight/event/anecdote placement, app tie-in
+5. Add SEO plan:
+   - Keywords, meta title, meta description, URL slug
+
+Constraints:
+- Move narrative: problem → tension → insight → action
+- Use at least one surprising insight in intro and outro
+- Flag generic sections and suggest how to make them sharper
+</code></pre>
+<hr>
+<h3>📄 Outline Template</h3>
+<pre><code class="language-markdown"># Outline – [Working title]
+
+## 1. Brief recap
+- Audience:
+- Goal:
+- Primary keyword:
+- Secondary keywords:
+
+## 2. Title ideas
+1. ...
+2. ...
+
+## 3. Hook ideas
+- Hook A – Stat:
+- Hook B – Mini anecdote:
+- Hook C – Big question:
+
+## 4. Structure
+
+### H2: [Section]
+- Purpose:
+- Key points:
+- Insights:
+- Data:
+- Event:
+- Anecdote slot:
+- App tie-in:
+
+...
+
+## 5. Conclusion plan
+- Takeaway:
+- Emotional close:
+- CTA:
+
+## 6. SEO notes
+- Primary keyword:
+- Secondary keywords:
+- Meta title:
+- Meta description:
+- Suggested URL:
+</code></pre>
+<hr>
+<h2>✍️ Writer Agent</h2>
+<h3>📥 Inputs</h3>
+<ul>
+<li><code>idea_brief.md</code></li>
+<li><code>topic-research.md</code></li>
+<li><code>topic-outline.md</code></li>
+<li><code>voice_guidelines.md</code> <em>(tone, banned phrases, examples)</em></li>
+<li>Optional: <code>story_bank.md</code></li>
+</ul>
+<h3>📤 Output</h3>
+<ul>
+<li><code>YYYY-MM-DD-topic-draft-v1.md</code> (full blog/newsletter draft)</li>
+</ul>
+<hr>
+<h3>🧾 Writer Requirements</h3>
+<ul>
+<li><p><strong>Follow outline exactly</strong></p>
+</li>
+<li><p><strong>Hook</strong>: Use and polish one proposed hook</p>
+</li>
+<li><p><strong>Each section</strong>:</p>
+<ul>
+<li>Add a <strong>concrete example</strong> or <strong>anecdote</strong></li>
+<li>Explain stats in plain language</li>
+<li>Reference real or relevant events</li>
+<li>Mention app features where appropriate</li>
+</ul>
+</li>
+<li><p><strong>Format for mobile</strong>:</p>
+<ul>
+<li>Short paragraphs</li>
+<li>Bullet lists</li>
+<li>Descriptive subheads</li>
+</ul>
+</li>
+<li><p><strong>End with CTA</strong> tied to the app</p>
+</li>
+</ul>
+<hr>
+<h3>💡 Prompt Template</h3>
+<pre><code class="language-prompt">You are a **long-form writer** for a mobile social dining app.
+Your job: turn this outline into a vivid, emotionally compelling article.
+
+Inputs:
+- Brief: [paste]
+- Research: [paste or reference]
+- Outline: [paste]
+- Voice: [paste key notes]
+
+Instructions:
+1. Follow the structure exactly.
+2. Start with one polished hook.
+3. Add story or concrete example in every section.
+4. Integrate data/events naturally ("That means...")
+5. Use bullets &amp; short paras.
+6. No generic filler. Replace vague claims with scenes or storylets.
+7. End with specific CTA related to app.
+
+Style: Friendly, smart, adult, local.
+</code></pre>
+<hr>
+<h3>📄 Draft Template</h3>
+<pre><code class="language-markdown"># [Working or final title]
+
+&gt; Meta title:  
+&gt; Meta description:  
+&gt; URL slug:
+
+## Intro
+
+[Hook: stat, anecdote, or question → leads into core problem]
+
+## H2: [Section Title]
+[1–2 line intro to section]
+
+- [Paragraphs and bullets]
+- [Anecdote where marked]
+- [Data explained in human terms]
+- [App example]
+
+## H2: [Next Section]
+...
+
+## Conclusion
+
+[Summarize core idea or shift]
+
+**Call to action:** [Concrete, app-linked next step]
+</code></pre>
+<hr>
+<h2>✅ Summary: How to Use This Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Input</th>
+<th>Output</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🧠 <strong>Researcher</strong></td>
+<td><code>idea_brief.md</code></td>
+<td><code>topic-research.md</code></td>
+<td>Extract original, usable insights</td>
+</tr>
+<tr>
+<td>🧱 <strong>Outliner</strong></td>
+<td>Brief + research</td>
+<td><code>topic-outline.md</code></td>
+<td>Translate insights into narrative flow</td>
+</tr>
+<tr>
+<td>✍️ <strong>Writer</strong></td>
+<td>Outline + research + voice</td>
+<td><code>topic-draft-v1.md</code></td>
+<td>Turn outline into publishable story</td>
+</tr>
+</tbody></table>
+<p>Each agent is <strong>narrow, structured, and reusable</strong>. With small prompt tweaks and doc changes, this system scales from <strong>SEO blogs</strong> to <strong>emotional newsletters</strong>.</p>
+<hr>
+<h2>References &amp; Footnotes</h2>
+<p>[^1]: Modular doc formats ensure clarity and versioning across agents.</p>
+<p>[^2]: Each agent is prompted for structure-first, prose-second work.</p>
+<p>[^3]: SEO trends prioritize originality, usefulness, and insight density in 2025 and beyond: <a href="https://www.siteimprove.com/blog/seo-content-optimization-best-practices/">source</a></p>
+<p>[^4]: Writer and researcher separation reduces generic fluff and repetitive conclusions.</p>
+<p>[^5]: Outlines anchor the article’s logic and ensure content doesn't drift.</p></div>
+</body>
+</html>

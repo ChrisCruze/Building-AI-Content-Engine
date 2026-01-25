@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Driven System for Viral Blog Content Generation</title>
+<meta name="Title" content="AI-Driven System for Viral Blog Content Generation" type="Artifact">
+<meta name="Summary" content="A multi-agent workflow combines specialized drafting, calibrated provocation, and real-time MongoDB event data to create high-performing content." type="Artifact">
+<meta name="Description" content="A framework slide outlining a three-part methodology for automated, high-impact blog writing." type="Artifact">
+<meta name="Insight" content="Provocative content drives virality, but long-term success requires balancing emotional intensity with brand credibility to avoid reputational damage." type="Artifact">
+<meta name="Question" content="How can AI automation be leveraged to create viral blog content that remains credible and relevant?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 20px; background-color: #e6e6e6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- <analysis>
+1. Key Points:
+   - Specialized Agents: Using distinct agents for research, outlining, drafting, and titles ensures quality at every step (sequential workflow).
+   - Credible Provocation: Virality requires emotion/provocation, but it must be balanced with trust. Challenge ideas, not the brand's integrity.
+   - Event-Driven Data (MongoDB): Integrating real-world data (events, attendance) makes content grounded, relevant, and useful, bridging online/offline.
+   - Synthesis: These three elements combine to form a high-performing AI blogging system.
+
+2. Information Type:
+   - This is a Strategic Framework. It describes a system composed of three distinct pillars working together to achieve a specific outcome (Viral, Credible Blogging).
+
+3. Slide Layout Evaluation:
+   - Table Slide: Poor fit. This isn't a comparison of items.
+   - Chart Slide: No quantitative data provided.
+   - Subtitle Slide: Possible, but visually weaker for showing the "Three Pillars" concept.
+   - Framework Slide: Best fit. We have three distinct components (Process, Strategy, Data) that support a central thesis. A three-column "pillar" layout communicates this structural relationship clearly.
+   - Visual Slide: No specific imagery to display.
+
+4. Selection: Framework Slide (Three-Column Structure).
+   - Reasoning: The content naturally breaks down into three distinct strategies that feed into the main goal. A columnar layout allows for equal weight to be given to "Process," "Emotion," and "Data."
+
+5. Plan:
+   - Title: Focus on the synthesis of the three elements.
+   - Layout: Three distinct vertical cards/columns.
+   - Visuals: Use color-coded headers (McKinsey Blue) and simple iconography placeholders.
+</analysis> -->
+
+<!-- <design_planning>
+1. Color Palette:
+   - Primary: #051C2C (Deep Navy - Text/Headers)
+   - Accent: #005EB8 (Bright Corporate Blue - Borders/Highlights)
+   - Background: #FFFFFF (White - Slide Base)
+   - Background Alt: #F4F7F9 (Light Blue/Grey - Card Backgrounds)
+
+2. Visual Hierarchy:
+   - Level 1: Slide Title (24px, Dark Navy, Bold).
+   - Level 2: Kicker/Lead-in (16px, Dark Grey, Regular).
+   - Level 3: Column Headers (18px, Accent Blue, Bold).
+   - Level 4: Body Text (14px, Dark Grey, Line-height 1.5).
+
+3. Layout Structure (NO FLEXBOX):
+   - Main container: 1000px fixed width (standard slide ratio simulation).
+   - Content Area: Use `display: table` and `display: table-cell` to create three equal-height columns with gaps.
+   - Spacing: 20px gaps between columns.
+
+4. Typography & Visuals:
+   - Font: Segoe UI (Standard, clean, professional).
+   - Visual Elements: 
+     - Top border on cards to denote "Pillars".
+     - Chevron/Arrow symbols to denote "flow" or "action".
+</design_planning> -->
+
+<!-- Main Slide Container -->
+<div style="width: 1000px; min-height: 563px; margin: 0 auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; position: relative;">
+
+    <!-- Header Section -->
+    <div style="margin-bottom: 30px; border-bottom: 1px solid #d1d1d1; padding-bottom: 15px;">
+        <h1 style="color: #051C2C; font-size: 28px; margin: 0 0 10px 0; font-weight: 600; letter-spacing: -0.5px;">
+            A multi-agent AI system drives viral blogging by integrating specialized workflows, emotional intelligence, and real-time data
+        </h1>
+        <p style="color: #555555; font-size: 16px; margin: 0; line-height: 1.4;">
+            To achieve virality without sacrificing credibility, the system synthesizes three distinct capabilities: sequential agent processing, calibrated provocation, and event-driven data integration.
+        </p>
+    </div>
+
+    <!-- Content Framework: Three Pillars using Table Display for layout (No Flexbox) -->
+    <div style="display: table; width: 1000px; border-spacing: 20px 0; margin-left: -20px;">
+        
+        <!-- Pillar 1: Specialized Agents -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #F4F7F9; border-top: 4px solid #005EB8; padding: 25px;">
+            <div style="margin-bottom: 15px;">
+                <!-- Icon Placeholder: Gear/Process -->
+                <span style="font-size: 24px; color: #005EB8; display: block; margin-bottom: 10px;">&#9881;</span>
+                <h2 style="color: #005EB8; font-size: 18px; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Sequential Workflows
+                </h2>
+            </div>
+            <p style="font-size: 15px; font-weight: 600; color: #333; margin: 0 0 10px 0;">
+                Role-Based Execution
+            </p>
+            <p style="color: #444; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0;">
+                The blog creation process is broken into distinct stages—research, outlining, drafting, and titling. Each stage is handled by a dedicated AI agent configured via <code>agent.md</code> with specific prompts to ensure high fidelity at every step.
+            </p>
+            <div style="border-top: 1px solid #dce4e8; padding-top: 10px;">
+                <p style="color: #666; font-size: 13px; line-height: 1.4; margin: 0;">
+                    <strong>Impact:</strong> Enforces a disciplined workflow that maintains quality control and structural integrity.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pillar 2: Credible Provocation -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #F4F7F9; border-top: 4px solid #005EB8; padding: 25px;">
+            <div style="margin-bottom: 15px;">
+                <!-- Icon Placeholder: Balance Scale/Shield -->
+                <span style="font-size: 24px; color: #005EB8; display: block; margin-bottom: 10px;">&#9878;</span>
+                <h2 style="color: #005EB8; font-size: 18px; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Calibrated Provocation
+                </h2>
+            </div>
+            <p style="font-size: 15px; font-weight: 600; color: #333; margin: 0 0 10px 0;">
+                Trust-Based Virality
+            </p>
+            <p style="color: #444; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0;">
+                Content is designed to trigger high-arousal emotions to drive spread, but is carefully guarded to challenge <em>ideas</em> rather than brand integrity. This approach secures attention without eroding long-term audience trust.
+            </p>
+            <div style="border-top: 1px solid #dce4e8; padding-top: 10px;">
+                <p style="color: #666; font-size: 13px; line-height: 1.4; margin: 0;">
+                    <strong>Impact:</strong> Captures viral potential while preserving professional credibility and future opportunities.
+                </p>
+            </div>
+        </div>
+
+        <!-- Pillar 3: Event-Driven Data -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #F4F7F9; border-top: 4px solid #005EB8; padding: 25px;">
+            <div style="margin-bottom: 15px;">
+                <!-- Icon Placeholder: Database -->
+                <span style="font-size: 24px; color: #005EB8; display: block; margin-bottom: 10px;">&#9906;</span>
+                <h2 style="color: #005EB8; font-size: 18px; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Contextual Relevance
+                </h2>
+            </div>
+            <p style="font-size: 15px; font-weight: 600; color: #333; margin: 0 0 10px 0;">
+                MongoDB Integration
+            </p>
+            <p style="color: #444; font-size: 14px; line-height: 1.6; margin: 0 0 15px 0;">
+                The system pulls real-time data from MongoDB—including user history, social dining stats, and upcoming events—to ground the content in reality. Blogs become functional tools that reflect actual user experiences.
+            </p>
+            <div style="border-top: 1px solid #dce4e8; padding-top: 10px;">
+                <p style="color: #666; font-size: 13px; line-height: 1.4; margin: 0;">
+                    <strong>Impact:</strong> Increases engagement by connecting digital content to tangible, real-world activities.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer / Source -->
+    <div style="position: absolute; bottom: 20px; left: 50px; right: 50px; border-top: 1px solid #e0e0e0; padding-top: 10px;">
+        <span style="font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px;">
+            Source: Internal Analysis of Multi-Agent Content Systems
+        </span>
+        <span style="font-size: 11px; color: #888; float: right;">
+            Confidential - For Discussion
+        </span>
+    </div>
+
+</div>
+
+</body>
+</html>

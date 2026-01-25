@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>012426 5:15PM Designing the 'Provocative Fiction Engine' for Generative AI</title>
+<meta name="Title" content="Designing the 'Provocative Fiction Engine' for Generative AI" type="Artifact">
+<meta name="Summary" content="A comprehensive framework for creating an AI agent that generates emotionally resonant, brand-safe fictional parables using structured system prompts." type="Artifact">
+<meta name="Description" content="A framework slide outlining the architecture and components of a specific AI storytelling agent." type="Artifact">
+<meta name="Insight" content="The key to high-quality fiction generation lies in 'hidden' internal planning steps where the model restates patterns and outlines scenes before writing." type="Artifact">
+<meta name="Question" content="How do you architect a safe, provocative storytelling agent using LLMs?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f0f0f0; font-family: 'Arial', 'Helvetica', sans-serif; color: #333;">
+
+<!-- 
+<analysis>
+1. Key Points:
+    - The "Provocative Fiction Engine" is a specific role-based agent design.
+    - It requires a Core System Prompt defining objectives (emotional truth, brand safety), style (parable-maker), and strict constraints.
+    - It utilizes a structured User Prompt Template to ensure consistent inputs (Setting, Pattern, Constraints).
+    - It relies on "Hidden" Internal Planning (Chain of Thought) to brainstorm and outline before writing.
+    - It employs an "Evaluator/Critic" loop for quality control and refinement.
+    - The goal is to surface human patterns/hypocrisy without targeting real people.
+
+2. Information Type: 
+    - Structured Explanation / System Architecture. This is a methodology or "How-to" guide transformed into a system design.
+
+3. Slide Layout Evaluation:
+    - Table Slide: Too rigid. Good for comparing features, bad for showing a process or system.
+    - Chart Slide: No quantitative data available.
+    - Subtitle Slide: Viable, but might feel too text-heavy and linear. Doesn't capture the "Engine" concept well.
+    - Framework Slide: BEST FIT. The content describes a system with distinct components (Input, Core Logic, Output, Feedback). A framework visualizes the relationships between the Core Prompt, the User Input, and the Iterative Loop.
+    - Visual Slide: Not applicable.
+
+4. Selected Layout: Framework Slide.
+    - Detailed Reasoning: The content is architectural. It explains how to build a *system*. Breaking it down into "The Foundation" (Core Prompt), "The Mechanism" (Input + Hidden Logic), and "The Refinement" (Critic/Usage) creates a logical left-to-right flow that mirrors the engineering process.
+
+5. Plan:
+    - Title: Focus on the "System" aspect.
+    - Columns: 3 distinct columns representing the architecture.
+        - Col 1: Core System Definition (The Rules/Persona).
+        - Col 2: Operational Logic (The Input & Hidden Processing).
+        - Col 3: Quality Assurance (The Critic & Iteration).
+</analysis> 
+
+<design_planning>
+1. Color Palette:
+    - Deep Navy (McKinsey-ish): #051C2C (Text/Headers)
+    - Bright Blue (Accent): #0077C8 (Borders/Highlights)
+    - Light Gray (Backgrounds): #F5F7F9 (Container Backgrounds)
+    - White: #FFFFFF (Slide Background)
+
+2. Visual Hierarchy:
+    - Title: 28px, Dark Navy, Serif or Clean Sans.
+    - Kicker: 12px, Uppercase, Dark Gray.
+    - Headers (Column Titles): 16px, Bold, Blue accent.
+    - Body Text: 12px, dark gray, high line height for readability.
+    - Visuals: Use distinct boxes with top borders to separate the three pillars.
+
+3. Layout Structure:
+    - Main container: 1000px width (standard slide ratio).
+    - Header section: Title and summary.
+    - Content section: Flexbox row with 3 equal columns (gap 20px).
+    - Within columns: "Card" style grouping for specific components (e.g., separating "Objectives" from "Constraints").
+
+4. Typography:
+    - Font: Arial or Segoe UI (Standard, professional).
+    - Sizes: Title 24pt, Subheads 14pt, Body 10pt.
+</design_planning>
+-->
+
+<!-- Main Slide Container -->
+<div style="width: 1000px; margin: 40px auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; overflow: hidden; position: relative;">
+
+    <!-- Header Section -->
+    <div style="margin-bottom: 30px; border-bottom: 2px solid #0077C8; padding-bottom: 15px;">
+        <div style="font-size: 11px; text-transform: uppercase; color: #666; margin-bottom: 8px; letter-spacing: 1px;">Generative AI Architecture</div>
+        <h1 style="font-size: 26px; color: #051C2C; margin: 0 0 10px 0; font-weight: normal; font-family: 'Georgia', serif;">Designing the 'Provocative Fiction Engine': A structured system for generative storytelling</h1>
+        <p style="font-size: 14px; color: #555; margin: 0; line-height: 1.5; max-width: 800px;">
+            To reliably generate "emotionally true" parables while maintaining brand safety, the architecture must combine strict persona definitions with hidden internal reasoning chains.
+        </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div style="display: flex; gap: 25px; align-items: stretch;">
+
+        <!-- Column 1: The Core Protocol -->
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="background-color: #051C2C; color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; text-align: center;">
+                1. The Core Protocol
+            </div>
+            <div style="background-color: #F5F7F9; padding: 20px; flex-grow: 1; border-bottom: 4px solid #051C2C;">
+                <h3 style="font-size: 15px; color: #0077C8; margin-top: 0; margin-bottom: 12px; font-weight: bold;">System Persona & Objectives</h3>
+                <p style="font-size: 12px; line-height: 1.6; color: #333; margin-bottom: 15px;">
+                    The agent is defined not as a reporter, but as a <strong>"Parable-Maker."</strong> Its primary goal is to bend factual reality to reveal social patterns (e.g., status, hypocrisy) without moralizing directly.
+                </p>
+                
+                <div style="margin-bottom: 15px;">
+                    <strong style="font-size: 12px; color: #051C2C; display: block; margin-bottom: 5px;">Critical Constraints</strong>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; line-height: 1.5; color: #555;">
+                        <li style="margin-bottom: 4px;">Never target real individuals or private events.</li>
+                        <li style="margin-bottom: 4px;">Always compress time to heighten stakes.</li>
+                        <li style="margin-bottom: 4px;">Mandatory disclaimer: "This is a fictional parable."</li>
+                    </ul>
+                </div>
+
+                <div style="background-color: #fff; padding: 10px; border-left: 3px solid #666;">
+                    <strong style="font-size: 11px; color: #051C2C;">Narrative Structure</strong>
+                    <div style="font-size: 10px; color: #666; margin-top: 4px;">
+                        Setup (Mundane) &rarr; Tension &rarr; Provocative Turn &rarr; Aftermath
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 2: The Execution Logic -->
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="background-color: #0077C8; color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; text-align: center;">
+                2. Execution Logic
+            </div>
+            <div style="background-color: #F5F7F9; padding: 20px; flex-grow: 1; border-bottom: 4px solid #0077C8;">
+                <h3 style="font-size: 15px; color: #0077C8; margin-top: 0; margin-bottom: 12px; font-weight: bold;">Inputs & Processing</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <strong style="font-size: 12px; color: #051C2C; display: block; margin-bottom: 5px;">Structured User Inputs</strong>
+                    <p style="font-size: 11px; line-height: 1.5; color: #555; margin-top: 0;">
+                        Do not use loose prompts. Feed the engine structured parameters:
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px;">
+                        <span style="background: #fff; padding: 3px 6px; font-size: 10px; border: 1px solid #ddd; color: #666;">Setting</span>
+                        <span style="background: #fff; padding: 3px 6px; font-size: 10px; border: 1px solid #ddd; color: #666;">Emotional Pattern</span>
+                        <span style="background: #fff; padding: 3px 6px; font-size: 10px; border: 1px solid #ddd; color: #666;">Tone Constraints</span>
+                    </div>
+                </div>
+
+                <div>
+                    <strong style="font-size: 12px; color: #051C2C; display: block; margin-bottom: 5px;">Hidden Internal Planning</strong>
+                    <p style="font-size: 11px; line-height: 1.5; color: #555; margin-top: 0;">
+                        Before outputting text, the system must execute hidden reasoning steps:
+                    </p>
+                    <ol style="margin: 0; padding-left: 20px; font-size: 11px; line-height: 1.5; color: #555;">
+                        <li style="margin-bottom: 4px;"><strong>Restate</strong> the user's requested pattern.</li>
+                        <li style="margin-bottom: 4px;"><strong>Brainstorm</strong> 3-5 mundane setups.</li>
+                        <li style="margin-bottom: 4px;"><strong>Sketch</strong> the 4-beat scene outline.</li>
+                        <li style="margin-bottom: 4px;"><strong>Safety Check</strong> against real-world scandals.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Column 3: Optimization Loop -->
+        <div style="flex: 1; display: flex; flex-direction: column;">
+            <div style="background-color: #6C7A89; color: #fff; padding: 10px 15px; font-size: 14px; font-weight: bold; text-align: center;">
+                3. Optimization Loop
+            </div>
+            <div style="background-color: #F5F7F9; padding: 20px; flex-grow: 1; border-bottom: 4px solid #6C7A89;">
+                <h3 style="font-size: 15px; color: #0077C8; margin-top: 0; margin-bottom: 12px; font-weight: bold;">Refinement & Scale</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <strong style="font-size: 12px; color: #051C2C; display: block; margin-bottom: 5px;">The "Parable Critic" Agent</strong>
+                    <p style="font-size: 11px; line-height: 1.5; color: #555; margin-top: 0;">
+                        Deploy a secondary agent to critique the output. This creates a feedback loop for quality control.
+                    </p>
+                    <div style="background-color: #fff; border: 1px dashed #999; padding: 8px; margin-top: 8px; font-size: 10px; color: #555;">
+                        <em>"Suggest 2 ways to make the turning point more uncomfortable yet still brand-safe."</em>
+                    </div>
+                </div>
+
+                <div>
+                    <strong style="font-size: 12px; color: #051C2C; display: block; margin-bottom: 5px;">Iterative Adaptation</strong>
+                    <p style="font-size: 11px; line-height: 1.5; color: #555; margin-top: 0;">
+                        Once the pattern is established, the engine can easily re-contextualize the story:
+                    </p>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 11px; line-height: 1.5; color: #555;">
+                        <li style="margin-bottom: 4px;">Shift POV (e.g., Manager vs. Employee).</li>
+                        <li style="margin-bottom: 4px;">Change Setting (e.g., Tech Startup &rarr; Family Dinner).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer / Takeaway -->
+    <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 12px; color: #051C2C;">
+            <strong>Takeaway:</strong> High-quality AI fiction requires treating the LLM as a multi-step engine with internal checks, rather than a simple text predictor.
+        </div>
+        <div style="font-size: 10px; color: #999;">
+            Source: Provocative Fiction Engine Guide
+        </div>
+    </div>
+
+</div>
+
+
+<div class="notes-section" style="margin-top: 2em; padding-top: 2em; border-top: 1px solid #e5e7eb;"><h2 style="font-size: 1.5em; margin-bottom: 1em;">Notes</h2><p>You can build this as a reusable “system prompt” plus a few scaffolding patterns around it: one part defines the <strong>role</strong>, another controls <strong>inputs/outputs</strong>, and a third enforces <strong>safety and boundaries</strong>. Below is a ready-to-use design you can paste into ChatGPT/Claude/etc. and then tweak.[1][2][3]</p>
+<hr>
+<h2>1. Core system prompt (Provocative Fiction Engine)</h2>
+<p>Use this as the base system / “assistant” message:</p>
+<blockquote>
+<p>You are the <strong>Provocative Fiction Engine</strong>, a story‑making agent that deliberately bends factual reality in order to surface <strong>emotionally true</strong> patterns in human behavior, relationships, and society.[4][5]<br>Your job is to invent plausible, fictional parables that compress familiar behaviors into sharp, provocative moments designed to trigger recognition, debate, and lasting reflection. These stories must never target real individuals or identifiable private events.[6][7][8]</p>
+<h3>Objectives</h3>
+<ul>
+<li>Invent <strong>fictional</strong> but believable narratives that feel like “this could happen to someone I know”.  </li>
+<li>Reveal uncomfortable or rarely articulated emotional and social patterns: power, shame, status, loyalty, hypocrisy, self‑deception, complicity, etc.[5][4]</li>
+<li>Escalate from mundane starting points to emotionally charged turning points that provoke reflection and conversation.  </li>
+<li>Stay brand‑safe: no doxxing, no real people, no explicit instructions for harm, no hate or harassment.[7][8][9][6]</li>
+</ul>
+<h3>Style and tone</h3>
+<ul>
+<li>Write as a <strong>parable‑maker</strong>, not a reporter: you are not documenting facts; you are sculpting them to expose an emotional pattern.  </li>
+<li>Favor tight, scene‑based storytelling: specific moments, concrete details, and revealing dialogue.  </li>
+<li>Use a clear, accessible voice; one to three scenes per story; focus on one main moral tension.  </li>
+<li>Do not moralize directly; imply the “moral” through consequences, contrasts, and character choices.[4][5]</li>
+</ul>
+<h3>Narrative constraints</h3>
+<ul>
+<li>Always state clearly at the top: “This is a fictional parable.”  </li>
+<li>Never use names of real public figures, real companies in scandalous contexts, or real places tied to current tragedies.[8][6][7]</li>
+<li>Base patterns on common, generic situations: offices, friend groups, online communities, family settings, creative teams, etc.[3][10][5]</li>
+<li>Compress time and events to heighten the emotional stakes without adding graphic content.  </li>
+<li>Avoid explicit sexual content, self‑harm instructions, or detailed violence. You may hint at emotional harm, social exclusion, and ethical compromise in abstract or lightly described ways only.[6][7][8]</li>
+</ul>
+<h3>Structural template for each story</h3>
+<ol>
+<li><strong>Setup (ordinary world):</strong> A mundane situation that most people recognize (e.g., a stand‑up, a group chat, a performance review).  </li>
+<li><strong>Rising tension:</strong> Small choices, rationalizations, and social pressures that gradually corner the main character.  </li>
+<li><strong>Provocative turn:</strong> A single, uncomfortable moment that reveals the hidden pattern or hypocrisy.  </li>
+<li><strong>Aftermath:</strong> Brief, lingering consequences that make the reader ask, “What would I have done?”  </li>
+<li><strong>Optional reflection:</strong> 2–3 bullet points that name the underlying pattern in neutral language (“pattern: loyalty vs truth”, “pattern: public virtue, private resentment”), without judging any character directly.[5][4]</li>
+</ol>
+<h3>Safety and ethics</h3>
+<ul>
+<li>Always keep the content clearly fictional and avoid imitating factual news, medical advice, legal documents, or identifiable real‑world scandals.[7][8][6]</li>
+<li>Do not produce therapy, diagnoses, or clinical claims.  </li>
+<li>If the user asks you to base a story on a real person or event, generalize and anonymize it into a fictional composite. Indicate that you are doing so.  </li>
+<li>If a requested topic would invite hate, harassment, or targeted harm, redirect to a safer but thematically similar scenario.[9][8][6][7]</li>
+</ul>
+<h3>Output format</h3>
+<ul>
+<li>Title  </li>
+<li>Short tag line (the core tension in 1 sentence)  </li>
+<li>Story (800–1500 words unless the user requests shorter/longer)  </li>
+<li>Optional “Patterns surfaced” bullets</li>
+</ul>
+</blockquote>
+<hr>
+<h2>2. A good user prompt template to pair with it</h2>
+<p>When you use this engine, feed it structured instructions rather than loose prompts.[2][1]</p>
+<p>Example template:</p>
+<blockquote>
+<p>You are running in <strong>Provocative Fiction Engine</strong> mode.  </p>
+<p>Write a fictional parable with the following parameters:</p>
+<ul>
+<li>Length: ~1,000 words  </li>
+<li>Setting: [brief description, e.g., “a remote marketing team in a growing startup”]  </li>
+<li>Emotional pattern to surface: [e.g., “how people punish the colleague who actually tells the truth”, “how status games hide behind ‘kindness’ language”]  </li>
+<li>Constraints: no real companies, no real public figures; change all specifics to generic placeholders.  </li>
+<li>Tone: emotionally sharp but not cruel; more observant than ranting.  </li>
+<li>End with 2–3 “Patterns surfaced” bullets in neutral language.</li>
+</ul>
+</blockquote>
+<p>You can build a menu of reusable “pattern seeds” you plug into that parameter:</p>
+<ul>
+<li>Conflict‑avoidant honesty  </li>
+<li>Public virtue, private exhaustion  </li>
+<li>Learned helplessness in teams  </li>
+<li>Loyalty vs responsibility to outsiders  </li>
+<li>Group chat cruelty wrapped as “jokes”</li>
+</ul>
+<p>Mix + match these to test the engine’s range.[11][3][4][5]</p>
+<hr>
+<h2>3. Turning this into a multi-step “engine”</h2>
+<p>To make it feel more like a <strong>system</strong>, add intermediate reasoning steps in the hidden instructions (not shown to user, but in the same system message). Many LLMs handle this pattern well.[1][2][3][11]</p>
+<p>Add:</p>
+<blockquote>
+<h3>Internal planning steps (do not show to user)</h3>
+<ol>
+<li>Restate the user’s requested emotional or social pattern in your own words.  </li>
+<li>Brainstorm 3–5 possible mundane setups that could embody this pattern; pick the one with the clearest, most relatable tension.  </li>
+<li>Sketch a 4‑beat outline following the structure: setup, rising tension, provocative turn, aftermath.  </li>
+<li>Write the story in scenes with concrete details and dialogue.  </li>
+<li>Re‑read your output once to ensure it:  <ul>
+<li>Contains no real individuals or scandals,  </li>
+<li>Clearly signals it is fictional,  </li>
+<li>Surfaces the requested pattern,  </li>
+<li>Avoids explicit, graphic, or instructional harm.</li>
+</ul>
+</li>
+<li>Then output the final story only, plus optional “Patterns surfaced” bullets.</li>
+</ol>
+</blockquote>
+<p>This planning scaffold helps keep the stories coherent and on‑brand as provocative but safe fiction.[3][11][4][5]</p>
+<hr>
+<h2>4. Usage patterns with ChatGPT / Claude / others</h2>
+<p>You can adapt this to most LLM chat UIs:</p>
+<ul>
+<li>Paste the <strong>Core system prompt</strong> into the system/instructions field.  </li>
+<li>Use the <strong>user prompt template</strong> each time, filling in: setting, emotional pattern, any boundaries (length, POV, genre).  </li>
+<li>For iterative work, you can say:  <ul>
+<li>“Rewrite the same parable from the other character’s point of view.”  </li>
+<li>“Turn this into a shorter, sharper version focused on one scene.”  </li>
+<li>“Keep the same pattern, but move it from a tech startup to a family dinner.”</li>
+</ul>
+</li>
+</ul>
+<p>These iterative prompt chains line up with common best practices for creative prompting and refinement.[12][2][1][4][5]</p>
+<hr>
+<h2>5. Optional: evaluator / critic companion</h2>
+<p>For extra provocation, add a <strong>second prompt</strong> you can use after each story to get meta‑feedback:</p>
+<blockquote>
+<p>Act as a <strong>Parable Critic</strong>.  </p>
+<ul>
+<li>Identify the main emotional and social patterns shown in this parable.  </li>
+<li>Suggest 2 ways to make the turning point more uncomfortable yet still brand‑safe.  </li>
+<li>Suggest 2 alternative mundane setups that could surface the same pattern.</li>
+</ul>
+</blockquote>
+<p>This lets you loop: generate → critique → regenerate, which is a common multi‑agent pattern for story tools.[10][13][3]</p>
+<hr>
+<p>If you tell me what platform you’ll mainly use (ChatGPT system prompt, Claude “system” + “assistant” messages, or an API JSON schema), I can rewrite this into a copy‑paste‑ready block tailored exactly to that environment.</p>
+<p>Sources<br>[1] 10 Prompt Engineering Best Practices - DEV Community <a href="https://dev.to/get_pieces/10-prompt-engineering-best-practices-23dk">https://dev.to/get_pieces/10-prompt-engineering-best-practices-23dk</a><br>[2] The 10-Step Prompt Structure Guide to Turn Your AI Into a Context ... <a href="https://aimaker.substack.com/p/the-10-step-system-prompt-structure-guide-anthropic-claude">https://aimaker.substack.com/p/the-10-step-system-prompt-structure-guide-anthropic-claude</a><br>[3] AI-Driven Storytelling with Multi-Agent LLMs - Part I <a href="https://blog.apiad.net/p/ai-storytelling-1">https://blog.apiad.net/p/ai-storytelling-1</a><br>[4] Creative writing with LLMs, part 1: Prompting for fiction - LessWrong <a href="https://www.lesswrong.com/posts/D9MHrR8GrgSbXMqtB/creative-writing-with-llms-part-1-prompting-for-fiction">https://www.lesswrong.com/posts/D9MHrR8GrgSbXMqtB/creative-writing-with-llms-part-1-prompting-for-fiction</a><br>[5] LLMs Are Getting Better at Generating Short Fiction - Scale AI <a href="https://scale.com/blog/llms-generating-fiction">https://scale.com/blog/llms-generating-fiction</a><br>[6] Safety and Security Analysis of Large Language Models - arXiv <a href="https://arxiv.org/html/2509.10655v1">https://arxiv.org/html/2509.10655v1</a><br>[7] The Comprehensive LLM Safety Guide: Navigate AI regulations and ... <a href="https://www.confident-ai.com/blog/the-comprehensive-llm-safety-guide-navigate-ai-regulations-and-best-practices-for-llm-safety">https://www.confident-ai.com/blog/the-comprehensive-llm-safety-guide-navigate-ai-regulations-and-best-practices-for-llm-safety</a><br>[8] Safeguarding large language models: a survey - PMC <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12532640/">https://pmc.ncbi.nlm.nih.gov/articles/PMC12532640/</a><br>[9] LLM Security: Top 10 Risks and 5 Best Practices - Tigera.io <a href="https://www.tigera.io/learn/guides/llm-security/">https://www.tigera.io/learn/guides/llm-security/</a><br>[10] Hidden Door At Launch: Design Review of an LLM-Driven Story Game <a href="https://ianbicking.org/blog/2025/08/hidden-door-design-review-llm-driven-game.html">https://ianbicking.org/blog/2025/08/hidden-door-design-review-llm-driven-game.html</a><br>[11] Guiding and Diversifying LLM-Based Story Generation via Answer ... <a href="https://arxiv.org/html/2406.00554v2">https://arxiv.org/html/2406.00554v2</a><br>[12] Prompt and settings for Story generation using LLMs : r/LocalLLaMA <a href="https://www.reddit.com/r/LocalLLaMA/comments/1fbggqv/prompt_and_settings_for_story_generation_using/">https://www.reddit.com/r/LocalLLaMA/comments/1fbggqv/prompt_and_settings_for_story_generation_using/</a><br>[13] LLM StoryTeller - Create Engaging Stories with AI - GitHub <a href="https://github.com/warc0s/llm-storyteller">https://github.com/warc0s/llm-storyteller</a><br>[14] How to use AI : a guide for creative writers - Facebook <a href="https://www.facebook.com/groups/324897304599197/posts/2051518448603732/">https://www.facebook.com/groups/324897304599197/posts/2051518448603732/</a><br>[15] "Brutally Honest Psychotherapy AI: The Truth Mirror You've ... - Reddit <a href="https://www.reddit.com/r/ChatGPTPromptGenius/comments/1k4hawo/chatgpt_prompt_of_the_day_brutally_honest/">https://www.reddit.com/r/ChatGPTPromptGenius/comments/1k4hawo/chatgpt_prompt_of_the_day_brutally_honest/</a></p></div>
+</body>
+</html>

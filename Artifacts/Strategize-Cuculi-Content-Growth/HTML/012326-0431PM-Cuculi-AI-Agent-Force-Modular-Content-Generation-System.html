@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuculi AI Agent Force: Modular Content Generation System</title>
+<meta name="Title" content="Cuculi AI Agent Force: Modular Content Generation System" type="Artifact">
+<meta name="Summary" content="A multi-agent ecosystem dividing content creation into Core, Strategic, and Specialized roles for flexible, goal-oriented workflows." type="Artifact">
+<meta name="Description" content="A comprehensive framework slide detailing the functional categorization of AI agents within the Cuculi Content Engine." type="Artifact">
+<meta name="Insight" content="Breaking content creation into discrete, specialized agent personas allows for mixing psychological triggers (empathy, provocation) with structural rigor." type="Artifact">
+<meta name="Question" content="How can specialized AI agents be orchestrated to produce scalable, high-quality content tailored to specific business goals?" type="Artifact">
+</head>
+<body style="margin: 0; padding: 0; background-color: #e6e6e6; font-family: 'Arial', 'Helvetica', sans-serif; -webkit-font-smoothing: antialiased;">
+
+<!-- <analysis>
+1. Key Points:
+   - The system is a "Multi-Agent System" for scalable blogging.
+   - It is not one-size-fits-all; it relies on "mix and match" workflows.
+   - Agents are divided into three specific categories:
+     1. Core Workflow (Foundation/Process): Strategist, Signal Hunter, Architect, Wordsmith, Refiner, Judge.
+     2. Strategic Content (Angle/Approach): Provocateur, Seasonal Strategist, Event Hunter, Sticky Marketer.
+     3. Specialized Writing (Enhancement/Tone): Headline Master, Storyteller, Data Weaver, Empathy Engine.
+   - Workflows combine these agents differently based on the goal (e.g., Viral vs. Data-Backed).
+   - Brand voice is warm, authentic, community-focused.
+
+2. Information Type:
+   - Framework/Structural: It shows a system architecture.
+   - Categorical: Grouping agents by function.
+   - Process: Showing how they combine (workflows).
+
+3. Slide Layout Evaluation:
+   - Table Slide: Too rigid. Good for listing agents, but fails to show the "system" or "mix and match" concept effectively.
+   - Chart Slide: No quantitative data (percentages/trends) to justify this.
+   - Subtitle Slide: Could work by listing the 3 categories as subtitles, but might look like a wall of text.
+   - Framework Slide: BEST FIT. This is an ecosystem. A visual diagram showing the three "buckets" of agents feeding into "Workflows" visually represents the "mix and match" value prop.
+   - Visual Slide: No physical object to depict.
+
+4. Selected Layout: Framework Slide.
+   - Why: The core value proposition is the modularity. A framework slide allows us to visualize the three distinct "pools" of talent (Core, Strategic, Specialized) and how they sit side-by-side to be drawn upon.
+
+5. Content Plan:
+   - Title: Focus on the "System" and "Flexibility".
+   - Main Graphic: Three vertical columns representing the 3 Categories.
+   - Within Columns: "Cards" or list items for each agent with a 3-4 word function summary.
+   - Bottom Section: "Workflow Application" showing 2 contrasting examples (e.g., Viral vs. Standard) to prove the modularity.
+</analysis> -->
+
+<!-- <design_planning>
+1. Color Palette (McKinsey Style):
+   - Primary Text/Header: Deep Navy (#051c2c) - Standard consulting authority color.
+   - Accent/Borders: Bright Blue (#005eb8) - Used for emphasis and key lines.
+   - Backgrounds: White (#ffffff) for the slide, very light gray (#f4f7f9) for grouping boxes.
+   - Text Secondary: Dark Gray (#333333) for body text.
+
+2. Visual Hierarchy:
+   - Level 1: Slide Title (Large, Serif or Sans-Serif, Dark Blue).
+   - Level 2: Column Headers (Bold, All Caps, Accent Blue border).
+   - Level 3: Agent Names (Bold, Dark).
+   - Level 4: Agent Descriptions (Smaller, gray).
+   - Separation: Use white space and light gray backgrounds to define the columns. Vertical lines to separate categories.
+
+3. Layout Structure (NO FLEXBOX):
+   - Container: Fixed width 1000px centered.
+   - Main Body: display: table with 3 cells of equal width (33%). This ensures equal height columns automatically.
+   - Spacing: 20px padding between columns.
+   - Bottom Bar: A full-width horizontal box (display: block) to show the workflows.
+
+4. Typography:
+   - Font: Arial (standard, safe, professional).
+   - Title: 24pt.
+   - Headers: 14pt Bold.
+   - Body: 10pt.
+   - Icons: Use simple HTML entities (e.g., &#9658; for arrows) to avoid external dependencies and keep it clean.
+</design_planning> -->
+
+<!-- Slide Container -->
+<div style="width: 1000px; margin: 40px auto; background-color: #ffffff; padding: 40px 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; position: relative;">
+
+    <!-- Header Section -->
+    <div style="margin-bottom: 30px; border-bottom: 2px solid #005eb8; padding-bottom: 15px;">
+        <div style="font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">Cuculi AI Content Engine</div>
+        <h1 style="font-size: 24px; color: #051c2c; margin: 0; font-weight: normal; line-height: 1.2;">
+            <span style="font-weight: bold;">The Agent Force:</span> A specialized, modular multi-agent system designed for scalable, goal-oriented content generation.
+        </h1>
+    </div>
+
+    <!-- Insight/Lead-in -->
+    <div style="margin-bottom: 30px; font-size: 14px; color: #333; line-height: 1.5; width: 80%;">
+        Unlike monolithic models, the Cuculi engine deploys specialized agents across three functional categories—Core, Strategic, and Specialized—allowing for dynamic workflow orchestration based on specific business goals.
+    </div>
+
+    <!-- Main Framework Area (Using Table display for columns) -->
+    <div style="display: table; width: 100%; border-spacing: 20px 0; margin-left: -20px;">
+        
+        <!-- Column 1: Core Workflow -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #f4f7f9; padding: 15px; border-top: 4px solid #051c2c;">
+            <div style="font-size: 14px; font-weight: bold; color: #051c2c; margin-bottom: 5px; text-transform: uppercase;">1. Core Workflow Agents</div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 15px; font-style: italic;">The foundational pipeline for every asset.</div>
+            
+            <!-- Agent List -->
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Strategist</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Plans funnel stages & psychological triggers.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">Signal Hunter</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Gathers MongoDB data & external research.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Architect</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Structures flow, outlines, and logic.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Wordsmith</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Generates brand-aligned first drafts.</div>
+            </div>
+             <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Refiner & Judge</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Polishes copy and enforces quality control.</div>
+            </div>
+        </div>
+
+        <!-- Column 2: Strategic Content -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #f4f7f9; padding: 15px; border-top: 4px solid #005eb8;">
+            <div style="font-size: 14px; font-weight: bold; color: #051c2c; margin-bottom: 5px; text-transform: uppercase;">2. Strategic Agents</div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 15px; font-style: italic;">Unique angles for timing and virality.</div>
+            
+            <!-- Agent List -->
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Provocateur</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Creates high-arousal, controversial hooks.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">Seasonal Strategist</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Aligns content with holidays & trends.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Event Hunter</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Connects blogs to real upcoming events.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">Sticky Marketer</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Applies 'Made-to-Stick' SUCCESs framework.</div>
+            </div>
+        </div>
+
+        <!-- Column 3: Specialized Writing -->
+        <div style="display: table-cell; width: 33%; vertical-align: top; background-color: #f4f7f9; padding: 15px; border-top: 4px solid #7aa9d6;">
+            <div style="font-size: 14px; font-weight: bold; color: #051c2c; margin-bottom: 5px; text-transform: uppercase;">3. Specialized Agents</div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 15px; font-style: italic;">Enhancements for tone and engagement.</div>
+            
+            <!-- Agent List -->
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">Headline Master</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Optimizes titles for curiosity gaps/clicks.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Storyteller</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Structures content into narrative arcs.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">The Data Weaver</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Integrates statistics naturally into text.</div>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <div style="font-size: 12px; font-weight: bold; color: #005eb8;">Empathy Engine</div>
+                <div style="font-size: 11px; color: #333; line-height: 1.3;">Validates user fears to build trust.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application / Workflow Section -->
+    <div style="margin-top: 30px; padding: 20px; border: 1px solid #e0e0e0; background-color: #fafafa;">
+        <div style="font-size: 12px; font-weight: bold; color: #051c2c; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Workflow Application: Orchestrating Agents for Specific Goals</div>
+        
+        <div style="display: table; width: 100%;">
+            <!-- Workflow 1 -->
+            <div style="display: table-cell; width: 48%; padding-right: 2%; vertical-align: middle;">
+                <div style="font-size: 11px; font-weight: bold; color: #005eb8; margin-bottom: 5px;">Goal: Viral Seasonal Content</div>
+                <div style="font-size: 11px; color: #333; background-color: #fff; border: 1px solid #ccc; padding: 8px; border-radius: 2px;">
+                    Seasonal Strategist <span style="color:#005eb8"> &rarr; </span> Provocateur <span style="color:#005eb8"> &rarr; </span> Sticky Marketer <span style="color:#005eb8"> &rarr; </span> Wordsmith
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div style="display: table-cell; width: 4%; vertical-align: middle; text-align: center; color: #ccc;">|</div>
+            
+            <!-- Workflow 2 -->
+            <div style="display: table-cell; width: 48%; padding-left: 2%; vertical-align: middle;">
+                <div style="font-size: 11px; font-weight: bold; color: #005eb8; margin-bottom: 5px;">Goal: High-Trust Data Article</div>
+                <div style="font-size: 11px; color: #333; background-color: #fff; border: 1px solid #ccc; padding: 8px; border-radius: 2px;">
+                    Signal Hunter <span style="color:#005eb8"> &rarr; </span> Data Weaver <span style="color:#005eb8"> &rarr; </span> Architect <span style="color:#005eb8"> &rarr; </span> Wordsmith
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Source -->
+    <div style="margin-top: 25px; font-size: 9px; color: #999; border-top: 1px solid #eee; padding-top: 10px; text-align: right;">
+        Source: Cuculi AI Content Engine Documentation; Agent Force Specification
+    </div>
+
+</div>
+
+</body>
+</html>
